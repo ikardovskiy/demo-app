@@ -17,6 +17,8 @@ services:
     environment:
       - spring.elasticsearch.rest.uris=http://elastic:9200
       - spring.data.elasticsearch.client.reactive.endpoints=elastic:9200
+    depends_on:
+      - elastic
 networks:
   appnetwork:
     driver: "bridge"

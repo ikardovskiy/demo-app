@@ -65,11 +65,7 @@ class LoaderServiceImplTest {
     public void test_createOrUpdate(){
         when(phoneCodeRepository.save(any()))
                 .thenAnswer(t-> Mono.<PhoneCode>just(t.getArgument(0)));
-        final var phoneCodes = Collections.singletonList(PhoneCode.builder()
-                .code("007")
-                .name("A")
-                .country("A1")
-                .build());
+        final var phoneCodes = Collections.singletonList(PHONE_CODE_1);
         StepVerifier.create(loaderService.createOrUpdate(phoneCodes))
         .expectNext(phoneCodes.get(0)).verifyComplete();
 
