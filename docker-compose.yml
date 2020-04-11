@@ -1,0 +1,22 @@
+version: '3'
+services:
+  elastic:
+    image: elasticsearch:6.6.2
+    networks:
+      - appnetwork
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - appnetwork
+    environment:
+      - spring.elasticsearch.rest.uris=http://elastic:9200
+      - spring.data.elasticsearch.client.reactive.endpoints=elastic:9200
+networks:
+  appnetwork:
+    driver: "bridge"

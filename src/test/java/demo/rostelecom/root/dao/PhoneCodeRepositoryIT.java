@@ -24,11 +24,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
-        classes = PhoneCodeRepositoryTest.LocalConfiguration.class,
+        classes = PhoneCodeRepositoryIT.LocalConfiguration.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE,
         properties = {"logging.level.org.springframework.data.elasticsearch.client.WIRE=trace"})
 
-class PhoneCodeRepositoryTest {
+class PhoneCodeRepositoryIT {
 
     static ElasticsearchContainer container;
 
