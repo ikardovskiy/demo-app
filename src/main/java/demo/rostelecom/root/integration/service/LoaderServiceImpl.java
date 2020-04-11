@@ -60,7 +60,7 @@ public class LoaderServiceImpl implements LoaderService {
         final var phoneCodeMap = names.entrySet().stream().map(entry -> PhoneCode.builder()
                 .name(entry.getKey())
                 .country(entry.getValue())
-                .code(phones.getOrDefault(entry.getKey(), null))
+                .code(phones.get(entry.getKey()))
                 .build()).collect(Collectors.toMap(PhoneCode::getName, Function.identity()));
         return phoneCodeMap;
     }
