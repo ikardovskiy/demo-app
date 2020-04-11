@@ -3,7 +3,7 @@ package demo.rostelecom.root.integration.service;
 import demo.rostelecom.root.dao.PhoneCodeRepository;
 import demo.rostelecom.root.integration.dao.CountryInfoDAO;
 import demo.rostelecom.root.model.PhoneCode;
-import org.springframework.scheduling.annotation.Scheduled;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,6 +16,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
+@Slf4j
 @Service
 public class LoaderServiceImpl implements LoaderService {
 
@@ -27,9 +28,10 @@ public class LoaderServiceImpl implements LoaderService {
         this.countryInfoDAO = countryInfoDAO;
     }
 
-    @Scheduled
+
     @Override
     public Mono<Void> loadCodes() {
+        log.info("reloading phone codes");
         return Mono.zip(countryInfoDAO.getNames(), countryInfoDAO.getPhones())
                 .map(LoaderServiceImpl::covertToPhoneCodes)
                 .flatMap(this::loadPhoneCodes);

@@ -2,11 +2,14 @@ package demo.rostelecom.root.service;
 
 import demo.rostelecom.root.dao.PhoneCodeRepository;
 import demo.rostelecom.root.model.PhoneCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class CodeServiceImpl implements CodeService {
 
@@ -18,7 +21,17 @@ public class CodeServiceImpl implements CodeService {
 
     @Override
     public Mono<List<PhoneCode>> searchCodes(String country) {
-        return phoneCodeRepository.findByCountryContains(country)
-                .collectList();
+        return validateAndConvertCountry(country)
+                .flatMapMany(phoneCodeRepository::findByCountryContains)
+                .collectList()
+                .doOnNext(s->log.trace("Request: {} Response: {}",country,s));
+    }
+
+    Mono<String> validateAndConvertCountry(String country){
+       return Mono.just(country).flatMap(s-> StringUtils.hasText(s)?Mono.just(s):Mono.error(new IllegalArgumentException("В паттерне поиска должен быть текст")))
+                .map(s->s.replaceAll("\\s",""))
+               .doOnNext(s->log.trace("pattern after whitespace replacement: {}",s))
+               .flatMap(s->s.length()>1?Mono.just(s):Mono.error(new IllegalArgumentException("В паттерне должно быть более одного символа")));
+
     }
 }
