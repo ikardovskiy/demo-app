@@ -1,6 +1,6 @@
 package demo.rostelecom.root.service;
 
-import demo.rostelecom.root.controller.PhoneCode;
+import demo.rostelecom.root.model.PhoneCode;
 import reactor.core.publisher.Mono;
 
 import java.util.List;

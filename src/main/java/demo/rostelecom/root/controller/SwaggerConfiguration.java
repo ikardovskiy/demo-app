@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 @EnableSwagger2WebFlux
 public class SwaggerConfiguration {
 
-    private static final String CONTROLLER_BASE_PACKAGE = "demo.rostelecom.root.controller";
+    private static final String CONTROLLER_BASE_PACKAGE = "demo.rostelecom.root";
 
 
     @Bean
