@@ -55,10 +55,10 @@ class PhoneCodeRepositoryIT {
     }
 
     @Test
-    public void test1(){
+    public void test_findByCountryContains(){
         PhoneCode phoneCode1 = PhoneCode.builder()
                 .name("MA")
-                .country("Malasia")
+                .country("Malaysia")
                 .build();
         PhoneCode phoneCode2 = PhoneCode.builder()
                 .name("TU")
