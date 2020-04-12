@@ -1,23 +1,26 @@
 #
 ### Запуск
 
-Require Maven & Java 11 on classpath
+Требуется Maven, Java 11, Docker.
  
-Go to project root.
+Все команды в данном разделе выполняются в корне проекта.
  
-Build
+#### Сборка
 
     mvn clean package
     
-Launch & Stop
+#### Запуск и останов
     
     docker-compose up 
     docker-compose down
+      
     
-Use
+#### Использование
 
 [Web Swagger UI](http://localhost:8080/swagger-ui.html)
+для поиска кодов стран по заданному паттерну
 
-[Integration Swagger UI](http://localhost:8081/swagger-ui.html)    
+[Integration Swagger UI](http://localhost:8081/swagger-ui.html)
+ручной запуск загрузки    
 
 
