@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -31,5 +32,21 @@ public class SearchController {
     @GetMapping("/code")
     public Mono<List<PhoneCode>> searchCodes(@RequestParam String country){
         return codeService.searchCodes(country);
+    }
+
+    @GetMapping("/code1")
+    public Mono<List<PhoneCode>> searchCodes1(@RequestParam String country){
+        return Mono.just(Arrays.asList(
+                PhoneCode.builder()
+                        .name("1")
+                        .country("2")
+                        .code("3")
+                .build(),
+                PhoneCode.builder()
+                        .name("1")
+                        .country("2")
+                        .code("3")
+                        .build()
+        ));
     }
 }
