@@ -1,7 +1,8 @@
 package demo.rostelecom.root.service;
 
-import demo.rostelecom.root.dao.PhoneCodeRepository;
+
 import demo.rostelecom.root.model.PhoneCode;
+import demo.rostelecom.root.repository.PhoneCodeRepositoryWrapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.*;
 class CodeServiceImplTest {
 
     @Mock
-    PhoneCodeRepository phoneCodeRepository;
+    PhoneCodeRepositoryWrapper phoneCodeRepository;
     private CodeServiceImpl codeService;
 
     @BeforeEach

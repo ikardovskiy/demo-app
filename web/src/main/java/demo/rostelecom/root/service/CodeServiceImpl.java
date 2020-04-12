@@ -1,7 +1,8 @@
 package demo.rostelecom.root.service;
 
-import demo.rostelecom.root.dao.PhoneCodeRepository;
+
 import demo.rostelecom.root.model.PhoneCode;
+import demo.rostelecom.root.repository.PhoneCodeRepositoryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -13,9 +14,9 @@ import java.util.List;
 @Service
 public class CodeServiceImpl implements CodeService {
 
-    private final PhoneCodeRepository phoneCodeRepository;
+    private final PhoneCodeRepositoryWrapper phoneCodeRepository;
 
-    public CodeServiceImpl(PhoneCodeRepository phoneCodeRepository) {
+    public CodeServiceImpl(PhoneCodeRepositoryWrapper phoneCodeRepository) {
         this.phoneCodeRepository = phoneCodeRepository;
     }
 
