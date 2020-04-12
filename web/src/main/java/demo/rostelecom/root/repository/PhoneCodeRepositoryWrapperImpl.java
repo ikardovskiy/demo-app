@@ -62,9 +62,10 @@ public class PhoneCodeRepositoryWrapperImpl implements PhoneCodeRepositoryWrappe
                 .upperCountry(Optional.ofNullable(p.getCountry()).map(String::toUpperCase).orElse(""))
                 .build();
     }
-    @Data
+    @Getter
     @AllArgsConstructor
     @Builder
+    @EqualsAndHashCode
     static class PhoneCodeIdx{
         PhoneCode phoneCode;
         String upperCountry;
