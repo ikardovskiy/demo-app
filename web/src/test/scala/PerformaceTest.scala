@@ -8,20 +8,20 @@ import scala.util.Random
 class PerformanceTest extends Simulation {
 
   val httpProtocol = http
-   // .baseUrl("http://localhost:8080")
-    .baseUrl("http://11.168.99.100:8080")
+    .baseUrl("http://localhost:8080")
+    // .baseUrl("http://11.168.99.100:8080")
     .userAgentHeader("Gatling")
     .shareConnections
 
 
   val scn = scenario("PerformanceTest")
-    .repeat(10) {
+    .repeat(50) {
       exec(http("GET /rest/code").get(s"/rest/code").queryParam("country",_=>Random.alphanumeric.take(2).mkString))
      // exec(http("GET /rest/code").get(s"/rest/code").queryParam("country",_=>""))
     }
 
   setUp(
     scn.inject(
-      constantUsersPerSec(100) during (30 seconds) randomized)
+      constantUsersPerSec(200) during (10 seconds) randomized)
   ).protocols(httpProtocol)
 }
