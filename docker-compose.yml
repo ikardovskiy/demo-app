@@ -8,10 +8,21 @@ services:
       - "9200:9200"
     environment:
       - discovery.type=single-node
-  app:
-    build: .
+  web:
+    build: ./web
     ports:
       - "8080:8080"
+    networks:
+      - appnetwork
+    environment:
+      - spring.elasticsearch.rest.uris=http://elastic:9200
+      - spring.data.elasticsearch.client.reactive.endpoints=elastic:9200
+    depends_on:
+      - elastic
+  integration:
+    build: ./integration
+    ports:
+      - "8081:8081"
     networks:
       - appnetwork
     environment:
