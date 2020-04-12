@@ -28,7 +28,7 @@ public class CountryInfoDAOImpl implements CountryInfoDAO {
                 get()
                 .uri(NAMES_PAGE)
                 .exchange()
-                .flatMap(c -> c.bodyToMono(new ParameterizedTypeReference<>() {}));
+                .flatMap(c -> c.bodyToMono(new ParameterizedTypeReference<Map<String, String>>() {}));
     }
 
     public Mono<Map<String, String>> getPhones() {
@@ -36,6 +36,6 @@ public class CountryInfoDAOImpl implements CountryInfoDAO {
                 get()
                 .uri(PHONES_PAGE)
                 .exchange()
-                .flatMap(c -> c.bodyToMono(new ParameterizedTypeReference<>() {}));
+                .flatMap(c -> c.bodyToMono(new ParameterizedTypeReference<Map<String, String>>() {}));
     }
 }
