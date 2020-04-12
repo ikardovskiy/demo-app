@@ -1,3 +1,6 @@
+![Build Status](https://api.travis-ci.com/ikardovskiy/demo-app.svg?branch=develop)
+![Code Coverage](https://codecov.io/github/ikardovskiy/demo-app/branch/develop/graph/badge.svg)
+
 #
 ### Запуск
 Сборка проекта проверялась под [AdoptOpenJDK 11.0.6](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot)
