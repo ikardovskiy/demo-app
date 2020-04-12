@@ -34,19 +34,4 @@ public class SearchController {
         return codeService.searchCodes(country);
     }
 
-    @GetMapping("/code1")
-    public Mono<List<PhoneCode>> searchCodes1(@RequestParam String country){
-        return Mono.just(Arrays.asList(
-                PhoneCode.builder()
-                        .name("1")
-                        .country("2")
-                        .code("3")
-                .build(),
-                PhoneCode.builder()
-                        .name("1")
-                        .country("2")
-                        .code("3")
-                        .build()
-        ));
-    }
 }

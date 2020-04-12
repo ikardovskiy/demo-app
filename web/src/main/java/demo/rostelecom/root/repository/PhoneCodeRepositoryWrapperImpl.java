@@ -1,5 +1,6 @@
 package demo.rostelecom.root.repository;
 
+import demo.rostelecom.root.dao.PhoneCodeRepository;
 import demo.rostelecom.root.model.PhoneCode;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,17 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Setter(AccessLevel.PRIVATE)
+@Setter(AccessLevel.PACKAGE)
+@Getter(AccessLevel.PACKAGE)
 public class PhoneCodeRepositoryWrapperImpl implements PhoneCodeRepositoryWrapper {
 
-    private final demo.rostelecom.root.dao.PhoneCodeRepository remoteRepository;
+    private final PhoneCodeRepository remoteRepository;
 
     private final boolean caching;
 
     private List<PhoneCodeIdx> phoneCodes = Collections.emptyList();
 
     public PhoneCodeRepositoryWrapperImpl(
-            demo.rostelecom.root.dao.PhoneCodeRepository remoteRepository,
+            PhoneCodeRepository remoteRepository,
             @Value("${app.cache.enable}") boolean caching) {
         this.remoteRepository = remoteRepository;
         this.caching = caching;
