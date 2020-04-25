@@ -1,6 +1,6 @@
 package demo.rostelecom.root.integration.controller;
 
-import demo.rostelecom.root.integration.service.LoaderService;
+import demo.rostelecom.root.integration.loader.LoaderService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

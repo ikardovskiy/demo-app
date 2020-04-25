@@ -1,4 +1,4 @@
-package demo.rostelecom.root.integration.service;
+package demo.rostelecom.root.integration.loader;
 
 import reactor.core.publisher.Mono;
 
